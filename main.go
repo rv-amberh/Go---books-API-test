@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
 )
 
@@ -56,7 +57,7 @@ var db *sql.DB
 
 func init() {
 	var err error
-	db, err = sql.Open("mysql", "ahall:password@/hallamber1")
+	db, err = sql.Open("mysql", "ahall:password@/ahalldb")
 	if err != nil {
 		panic(err)
 	}
@@ -220,5 +221,5 @@ func NewRouter() *mux.Router {
 
 func main() {
 	router := NewRouter()
-	log.Fatal(http.ListenAndServe(":3000", router))
+	log.Fatal(http.ListenAndServe(":8000", router))
 }
