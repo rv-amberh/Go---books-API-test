@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -221,5 +222,6 @@ func NewRouter() *mux.Router {
 
 func main() {
 	router := NewRouter()
+	fmt.Println("Listening on Port 8000...")
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
